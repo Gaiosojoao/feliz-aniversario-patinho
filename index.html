@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversário Patinho </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             min-height: 100vh;
             background: linear-gradient(135deg, #f8e002, #f8e002, #f8e002);
-            font-family: 'Comic Sans MS', cursive, serif;
+            font-family: 'Nunito', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -48,24 +51,54 @@
         /* Galeria */
         .galeria {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
-            max-width: 900px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 260px;
+            gap: 12px;
+            max-width: 960px;
             width: 100%;
             margin-bottom: 30px;
         }
 
-        .galeria img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
+        .galeria .foto-wrap {
             border-radius: 16px;
-            border: 4px solid rgba(255, 220, 0, 0.7);
-            box-shadow: 0 4px 20px rgba(200, 160, 0, 0.3);
-            transition: transform 0.3s;
+            overflow: hidden;
+            background: #f8e002;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .galeria img:hover { transform: scale(1.05); }
+        .galeria .foto-wrap:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+        }
+
+        .galeria .foto-wrap:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .galeria img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+            transition: none;
+        }
+
+        .galeria img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+        }
+
+        .galeria img:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
 
         .patinho {
             font-size: 2rem;
@@ -81,7 +114,7 @@
         /* Patinhos flutuantes */
         .hearts-bg span {
             position: fixed;
-            font-size: 1.5rem;
+            font-size: 2.5rem;
             animation: rise linear infinite;
             opacity: 0;
             pointer-events: none;
@@ -102,20 +135,28 @@
 <span class="patinho">🎂</span>
 
 <div class="mensagem">
-    <!-- ✏️ Edite a mensagem aqui -->
-    Hoje é um dia muito especial, assim como você é especial para mim.<br><br>
+    Feliz aniversário, meu patinho!! <br><br>
+    Que Deus te abençoe hoje e sempre, muita saúde, paz, amor e sucesso! <br><br>
+    Que tenhamos muitos jogos de tenis pra você apanhar bastante e rir muito! E muitas noites de jogos e bebidas <br><br>
+    Apesar de sempre dar uma surra você mora no coração. <br><br>
 </div>
 
 <div class="galeria">
     <!-- ✏️ Adicione suas fotos aqui -->
-    <img src="fotos/foto0.jpg" alt="foto 0">
+    <div class="foto-wrap"><img src="fotos/pato.jpg" alt="foto 0"></div>
+    <div class="foto-wrap"><img src="fotos/fotoma.jpg" alt="foto 1"></div>
+    <div class="foto-wrap"><img src="fotos/fotoma2.jpg" alt="foto 2"></div>
+    <div class="foto-wrap"><img src="fotos/fotoaima.jpg" alt="foto 3"></div>
+    <div class="foto-wrap"><img src="fotos/fotoaimacansado.jpg" alt="foto 4"></div>
+    <div class="foto-wrap"><img src="fotos/fotoaimajogando.jpg" alt="foto 5"></div>
+    
 </div>
 
 <script>
     const bg = document.getElementById('hearts');
     for (let i = 0; i < 15; i++) {
         const s = document.createElement('span');
-        s.textContent = ['🐥','🐤','🦆','🌻'][Math.floor(Math.random()*4)];
+        s.textContent = ['🐥','🐤','🦆','🎾','🏸'][Math.floor(Math.random()*5)];
         s.style.left = Math.random() * 100 + 'vw';
         s.style.animationDuration = (4 + Math.random() * 6) + 's';
         s.style.animationDelay = (Math.random() * 8) + 's';
